@@ -9,7 +9,7 @@ end
 
 return {
     {
-        "rebelot/kanagawa.nvi",
+        "rebelot/kanagawa.nvim",
         name = "kanagawa",
         config = function()
             -- Default options:
