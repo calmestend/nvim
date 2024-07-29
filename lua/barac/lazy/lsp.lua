@@ -56,7 +56,6 @@ return {
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 		local servers = {
-			"lua_ls",
 			"emmet_ls",
 			"clangd",
 			"cssls",
@@ -65,16 +64,7 @@ return {
 			"tsserver",
 			"eslint",
 			"html",
-			"htmx",
 			"svelte",
-			"rust_analyzer",
-			"tailwindcss",
-			"prismals",
-			"gopls",
-			"zls",
-			"astro",
-			"templ",
-			"yamlls",
 		}
 
 		--Servers Setup
@@ -95,29 +85,6 @@ return {
 			on_attach = on_attach,
 			capabilities = capabilities,
 			filetypes = {"html", "php", "svelte"}
-		})
-	
-		--Lua Setup
-		lsp_config.lua_ls.setup({
-			on_attach = on_attach,
-			capabilities = capabilities,
-			settings = {
-				Lua = {
-					runtime = {
-						version = "LuaJIT",
-					},
-					diagnostics = {
-						globals = { "vim" },
-					},
-					workspace = {
-						library = vim.api.nvim_get_runtime_file("", true),
-						checkThirdParty = false,
-					},
-					telemetry = {
-						enable = false,
-					},
-				},
-			},
 		})
 	end,
 }

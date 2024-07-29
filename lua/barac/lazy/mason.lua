@@ -17,7 +17,6 @@ return {
 		--Mason-LSP Setup
 		require("mason-lspconfig").setup({
 			ensure_installed = {
-				"lua_ls",
 				"cssls",
 				"jsonls",
 				"emmet_ls",
@@ -34,7 +33,6 @@ return {
 			ensure_installed = {
 				"prettierd",
 				"prettier",
-				"stylua",
 				"eslint_d",
 			},
 		})
