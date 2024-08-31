@@ -12,17 +12,17 @@ return {
 			-- Color table for highlights
 			-- stylua: ignore
 			local colors = {
-				bg       = '#202328',
-				fg       = '#bbc2cf',
-				yellow   = '#ECBE7B',
-				cyan     = '#008080',
-				darkblue = '#081633',
-				green    = '#98be65',
-				orange   = '#FF8800',
-				violet   = '#a9a1e1',
-				magenta  = '#c678dd',
-				blue     = '#51afef',
-				red      = '#ec5f67',
+				bg       = '#1c1a1c',
+				fg       = '#D9BFBF',
+				yellow   = '#C69F9F',
+				cyan     = '#819898',
+				darkblue = '#4f5369',
+				green    = '#819898',
+				orange   = '#ef9f76',
+				violet   = '#414550',
+				magenta  = '#84627E',
+				blue     = '#4f5369',
+				red      = '#955067',
 			}
 
 			local conditions = {
@@ -95,7 +95,7 @@ return {
 			ins_left {
 				-- mode component
 				function()
-					return ''
+					return '󰣇 '
 				end,
 				color = function()
 					-- auto change color according to neovims mode
@@ -179,7 +179,7 @@ return {
 					return msg
 				end,
 				icon = ' LSP:',
-				color = { fg = '#ffffff', gui = 'bold' },
+				color = { fg = '#D9BFBF', gui = 'bold' },
 			}
 
 			-- Add components to right sections
