@@ -44,12 +44,12 @@ return {
 			-- keybind Options
 			local opts = { noremap = true, silent = true, buffer = bufnr }
 			-- Keybinds
-			keymap.set("n", "gf", "<cmd>Lspsaga finder<CR>", opts) -- show definition, references
-			keymap.set("n", "go", "<cmd>Lspsaga outline<CR>", opts) -- show LSP outine of current buffer
+			keymap.set("n", "gf", "<cmd>Lspsaga finder<CR>", opts)      -- show definition, references
+			keymap.set("n", "go", "<cmd>Lspsaga outline<CR>", opts)     -- show LSP outine of current buffer
 			keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
 			keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- jump to previous diagnostic in buffer
 			keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
-			keymap.set("n", ";.", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
+			keymap.set("n", ";.", "<cmd>Lspsaga hover_doc<CR>", opts)   -- show documentation for what is under cursor
 		end
 
 		--Capabilities With Nvim-CMP
@@ -65,26 +65,51 @@ return {
 			"eslint",
 			"html",
 			"svelte",
+			"lua-language-server",
+			"phpactor",
+			"java-language-server"
 		}
 
 		--Servers Setup
 		for _, server in pairs(servers) do
-			if server == "lua_ls" then
+			if server == "lua-language-server" then
 				goto continue
 			end
+
 			lsp_config[server].setup({
 				on_attach = on_attach,
 				capabilities = capabilities,
 			})
+
 			::continue::
 		end
 
-	
+		-- Lua Setup
+		lsp_config.lua_ls.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			filetypes = { "lua" }
+		})
+
+		-- Java Setup
+		lsp_config.java_language_server.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			filetypes = { "lua" }
+		})
+
+		-- Php Setup
+		lsp_config.phpactor.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			filetypes = { "php" }
+		})
+
 		--Emmet Setup
 		lsp_config.emmet_ls.setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
-			filetypes = {"html", "php", "svelte"}
+			filetypes = { "html", "php", "svelte" }
 		})
 	end,
 }
